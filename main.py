@@ -16,14 +16,14 @@ def webhook():
 
     """
     print("RECEIVED")
-#    req = json.loads(request.json)#
-    req = get_json(silent=True, force=True)
+    req = json.loads(request.json)#
+#    req = get_json(silent=True, force=True)
     print(req)
     print(type(req))
     res = "Nothig happened"
     try:
-#        action = req['result']['action']#
-        action = req.get('result').get('action')
+        action = req['result']['action']#
+#        action = req.get('result').get('action')
     except AttributeError as e:
         print("ERRRROR JSON")
         print(e)
@@ -35,7 +35,12 @@ def webhook():
     r = {'fulfillmentText': res}
     print("WHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAT?!")
     print(res)
-    return make_response(jsonify({'speech': res})) #make_response(jsonify(r))# make_response(r)
+
+#    base = {
+#                 'speech':"sample response"}
+
+    return jsonify({'speech':res})#, "speech": "this text is spoken out loud if the platform supports voice interactions",
+#}) #make_response(jsonify(r))# make_response(r)
 
 
 def handle_money(params):
