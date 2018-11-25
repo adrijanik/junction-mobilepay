@@ -20,7 +20,7 @@ def webhook():
 #    req = get_json(silent=True, force=True)
     print(req)
     print(type(req))
-    res = "Nothig happened"
+    res = "How can I help you?"
     try:
         action = req['result']['action']#
 #        action = req.get('result').get('action')
